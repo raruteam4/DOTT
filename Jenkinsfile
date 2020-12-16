@@ -22,7 +22,7 @@ pipeline {
                 expression{env.EXECUTE}
             }
             steps {
-                sh 'echo " Esta vaina"
+                sh 'echo " Esta vaina"'
             }
         }
         stage ('Test') {
