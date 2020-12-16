@@ -4,7 +4,7 @@ pipeline {
             EXECUTE = 'true'
         }
         stages {
-            stage('One') {
+            stage('1') {
                 steps {
                     sh 'echo "First Stage 3"'
                 }
