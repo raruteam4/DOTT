@@ -1,30 +1,23 @@
 pipeline {
     agent any
-        environment {
-            EXECUTE = 'true'
-        }
-        stages {
-            stage('1') {
-                steps {
-                    sh 'echo "First Stage 3"'
-                }
-            }
-            stage('Two') {
-                when {
-                    expression{env.EXECUTE}
-                }
-                steps {
-                    sh 'echo "Checking webhook 2"'
-                    sh 'echo ${EXECUTE}'
-                }
-            }
-            stage('Three') {
-                when {
-                    expression{!env.EXECUTE}
-                }
-                steps {
-                    sh 'echo "Executing third sstage because the value of the environment variable is: ${EXECUTE}"'
-                }
+    
+    tools {nodejs "node"}
+    
+    stages {
+        stage('Cloning Git') {
+            steps {
+                git 'https://github.com/raruteam4/mocha_testing'
             }
         }
+        stage('Install Dependencies'){
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage ('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+    }
 }
