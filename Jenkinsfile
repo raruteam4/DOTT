@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Cloning Git') {
             steps {
-                git 'https://github.com/raruteam4/mocha_testing'
+                git 'https://github.com/raruteam4/DOTT'
             }
         }
         stage('Install Dependencies'){
@@ -29,7 +29,7 @@ pipeline {
                         -Dsonar.organization=raruteam4 \
                         -Dsonar.projectKey=raruteam4_DOTT \
                         -Dsonar.sources=. \
-                        -Dsonar.host.url=https://sonarcloud.io
+                        -Dsonar.host.url=https://sonarcloud.io"
                     }
                 }
             }
@@ -39,7 +39,6 @@ pipeline {
                 expression{env.EXECUTE}
             }
             steps {
-                sh 'npm test -- ipv4validation.js'
                 sh 'npm test'
             }
         }
