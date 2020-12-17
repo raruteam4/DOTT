@@ -12,6 +12,13 @@ pipeline {
                 git 'https://github.com/raruteam4/DOTT'
             }
         }
+        
+        stage('Install Dependencies'){
+            steps {
+                sh 'npm install'
+            }
+        }
+        
         stage ('SonarQube') {
             when {
                 expression{env.EXECUTE}
@@ -27,11 +34,6 @@ pipeline {
                         -Dsonar.host.url=https://sonarcloud.io"
                     }
                 }
-            }
-        }
-        stage('Install Dependencies'){
-            steps {
-                sh 'npm install'
             }
         }
         stage ('Test') {
