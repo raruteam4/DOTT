@@ -22,9 +22,6 @@ pipeline {
         }
         
         stage ('SonarQube') {
-            when {
-                expression{env.EXECUTE}
-            }
             steps {
                 script {
                     def scannerHome = tool 'sonarqube';
@@ -38,10 +35,7 @@ pipeline {
                 }
             }
         }
-        stage ('Test') {
-            when {
-                expression{!env.EXECUTE}
-            }
+        stage ('Test') {            
             steps {
                 script{
                     try{
