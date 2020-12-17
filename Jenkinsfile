@@ -19,7 +19,7 @@ pipeline {
         }
         stage ('SonarQube') {
             when {
-                expression{!env.EXECUTE}
+                expression{env.EXECUTE}
             }
             steps {
                 script {
