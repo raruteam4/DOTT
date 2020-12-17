@@ -36,7 +36,7 @@ pipeline {
         }
         stage ('Test') {
             when {
-                expression{env.EXECUTE}
+                expression{!env.EXECUTE}
             }
             steps {
                 sh 'npm test'
