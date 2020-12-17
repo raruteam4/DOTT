@@ -22,7 +22,16 @@ pipeline {
                 expression{!env.EXECUTE}
             }
             steps {
-                sh 'echo " Esta vaina"'
+                script {
+                    def scannerHome = tool 'sonarqube';
+                    withSonarQubeEnv("sonarqube-container") {
+                        sh "${tool("sonarqube")}/bin/sonar-scanner \
+                        -Dsonar.organization=raruteam4 \
+                        -Dsonar.projectKey=raruteam4_DOTT \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=https://sonarcloud.io
+                    }
+                }
             }
         }
         stage ('Test') {
