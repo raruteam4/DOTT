@@ -15,9 +15,9 @@ pipeline {
         
         stage('Install Dependencies'){
             steps {
-                sh 'npm install'
+                //sh 'npm install'
                 sh 'npm install -D esm'
-                sh 'npm install babel-preset-env --save-dev'
+                //sh 'npm install babel-preset-env --save-dev'
             }
         }
         
