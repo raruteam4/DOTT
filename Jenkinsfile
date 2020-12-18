@@ -31,7 +31,7 @@ pipeline {
                         -Dsonar.projectKey=raruteam4_DOTT \
                         -Dsonar.sources=. \
                         -Dsonar.host.url=https://sonarcloud.io \
-                        -Dsonar.javascript.lcov.reportPaths=node_modules/npm/node_modules/mute_stream/coverage/lcov.info"
+                        -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info"
                     }
                 }
             }
