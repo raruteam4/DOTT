@@ -15,7 +15,7 @@ pipeline {
         
         stage('Install Dependencies'){
             steps {
-                sh 'npm install'
+                sh 'npm install nyc --save-dev'
                 //sh 'npm install -D esm'
                 //sh 'npm install babel-preset-env --save-dev'
             }
@@ -30,7 +30,8 @@ pipeline {
                         -Dsonar.organization=raruteam4 \
                         -Dsonar.projectKey=raruteam4_DOTT \
                         -Dsonar.sources=. \
-                        -Dsonar.host.url=https://sonarcloud.io"
+                        -Dsonar.host.url=https://sonarcloud.io \
+                        -Dsonar.javascript.lcov.reportPaths=node_modules/npm/node_modules/mute_stream/coverage/lcov.info"
                     }
                 }
             }
